@@ -14,7 +14,7 @@ You can propose an endpoint to be added or removed to the documentation by openi
 
 ### Documentation
 
-Or  you can write the documentation for a endpoint. You can choose any endpoint that is located in the `Confirmed` card in the [project board](https://github.com/Kaktushose/tinder-api/projects/1).    
+Or  you can write the documentation for a endpoint. You can choose any endpoint that is located in the `Confirmed` card in the [project board](https://github.com/Kaktushose/tinder-api/projects/1). Add the endpoints you want to documentate to the `endpoints.md` file and open a pull request.   
 
 ## Wrapper:
 
