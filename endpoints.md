@@ -17,7 +17,7 @@
 
 ## Required Headers
 
-**Note: Don't send the `platform` header. This might effect the responses you get**
+**Note: Don't send the `platform` header. This might affect the responses you get**
 
 <table>
     <thead>
