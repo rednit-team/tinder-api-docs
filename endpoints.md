@@ -17,6 +17,8 @@
 
 ## Required Headers
 
+**Note: Don't send the `platform` header. This might effect the responses you get**
+
 <table>
     <thead>
         <tr>
@@ -44,52 +46,9 @@
 
 ## Authentication
 
-<table>
-    <thead>
-        <tr>
-            <th>Route</th>
-            <th>Method</th>
-            <th>Info</th>
-            <th>Payload</th>
-        </tr>
-    </thead>
-</table>
-
 ## Self User
-
-<table>
-    <thead>
-        <tr>
-            <th>Route</th>
-            <th>Method</th>
-            <th>Info</th>
-            <th>Payload</th>
-        </tr>
-    </thead>
-</table>
 
 ## Tinder User
 
-<table>
-    <thead>
-        <tr>
-            <th>Route</th>
-            <th>Method</th>
-            <th>Info</th>
-            <th>Payload</th>
-        </tr>
-    </thead>
-</table>
-
 ## Match
 
-<table>
-    <thead>
-        <tr>
-            <th>Route</th>
-            <th>Method</th>
-            <th>Info</th>
-            <th>Payload</th>
-        </tr>
-    </thead>
-</table>

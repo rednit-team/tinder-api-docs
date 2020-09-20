@@ -22,3 +22,5 @@ Or  you can write the documentation for a endpoint. You can choose any endpoint 
     - [Tinder.py](https://github.com/Kaktushose/tinder.py)
   * JS:
     - [Tinder.js](https://github.com/puf17640/tinder.js)
+  * Rust:
+    - [tinder-rs](https://github.com/Stupremee/tinder-rs)
