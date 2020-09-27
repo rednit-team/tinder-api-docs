@@ -1,12 +1,12 @@
 # Tinder API Documentation
 
-Unoffical documentation of the Tinder API
+Unofficial documentation of the Tinder API
 
-**Note: This is an unofficial documentation and I have nothing to do with Tinder nor their API. I take no responsibility for any potential damage, banned accounts or other troubles related to projects build upon this documentation** 
+**Note: This is an unofficial documentation and I have nothing to do with Tinder nor their API. I take no responsibility for any potential damage, banned accounts or other troubles related to projects build upon this documentation**
 
 ## Contributing
 
-If you would like to help with this project, please have a look at the [Contribution Guidelines](https://github.com/Kaktushose/tinder-api-docs/blob/master/CONTRIBUTING.md) 
+If you would like to help with this project, please have a look at the [Contribution Guidelines](https://github.com/Kaktushose/tinder-api-docs/blob/master/CONTRIBUTING.md)
 
 ## Wrapper:
 
