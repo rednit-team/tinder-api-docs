@@ -1,0 +1,29 @@
+{
+  "name": "tinder-api-docs",
+  "version": "1.0.0",
+  "description": "Unofficial documentation of the Tinder API",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "swagger:init": "rm docs -rf && mkdir docs && cd docs && git clone https://github.com/swagger-api/swagger-ui.git && mv swagger-ui/dist . && mv dist/* . && rm dist -rf && rm swagger-ui -rf && cd ../ && node .github/scripts/replaceUrl.js",
+    "swagger:convert": "node .github/scripts/convertCollection.js",
+    "dev": "npx sirv-cli docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rednit-team/tinder-api-docs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rednit-team/tinder-api-docs/issues"
+  },
+  "homepage": "https://github.com/rednit-team/tinder-api-docs#readme",
+  "dependencies": {
+    "postman-to-openapi": "^1.9.2"
+  }
+}

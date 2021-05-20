@@ -1,0 +1,83 @@
+{
+	"info": {
+		"_postman_id": "a6a26743-c25c-4316-b888-3314b76ec6ee",
+		"name": "tinder api docs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getRecommendations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://x0.tf",
+				"description": "get recommended users"
+			},
+			"response": [
+				{
+					"name": "getRecommendations",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "https://api.x0.tf/v1/info"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.19.3"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 May 2021 06:48:43 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": ""
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "X-Ratelimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-Ratelimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "X-Ratelimit-Reset",
+							"value": "60"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"invites\": false,\n    \"production\": true,\n    \"version\": \"main-9b87864\"\n}"
+				}
+			]
+		}
+	]
+}
