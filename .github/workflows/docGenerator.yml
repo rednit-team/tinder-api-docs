@@ -26,5 +26,5 @@ jobs:
             git add .
             git diff --staged --quiet || git commit -m "ci (build): $GITHUB_SHA"
             git checkout develop
-            git merge main
+            git merge master
             git push --all
