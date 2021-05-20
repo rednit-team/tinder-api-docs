@@ -1,0 +1,30 @@
+name: Swagger
+
+on:
+  pull_request: { paths: [ "tinder_api_docs.postman_collection.json" ], branches: ["master", "main"] }
+  workflow_dispatch:
+jobs:
+  swagger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Install Packages
+        run: npm install
+      - name: Init Swagger
+        run: "npm run swagger:init"
+      - name: Generate Swagger.yml
+        run: "npm run swagger:convert"
+      - name: Commit and push Changes
+        run: |
+            git config user.email "actions@github.com"
+            git config user.name "GitHub Actions"
+            git add .
+            git diff --staged --quiet || git commit -m "ci (build): $GITHUB_SHA"
+            git checkout develop
+            git merge main
+            git push --all

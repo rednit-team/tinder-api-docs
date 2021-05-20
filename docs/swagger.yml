@@ -1,0 +1,18 @@
+openapi: 3.0.0
+info:
+  title: tinder api docs
+  version: 1.0.0
+servers:
+  - url: https://x0.tf
+paths:
+  /:
+    get:
+      tags:
+        - General
+      summary: getRecommendations
+      description: get recommended users
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
