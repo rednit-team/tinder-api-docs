@@ -1,0 +1,762 @@
+swagger: '2.0'
+info:
+  title: Tinder API
+  version: '1.0'
+  contact:
+    name: Kaktushose
+    url: 'https://github.com/rednit-team/tinder-api-docs'
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+  description: ''
+host: api.gotinder.com
+schemes:
+  - https
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /profile:
+    get:
+      summary: Get Profile
+      tags: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Profile'
+      operationId: get-profile
+      description: Returns information about the self user
+    parameters: []
+definitions:
+  Profile:
+    description: The self user
+    type: object
+    x-examples:
+      Example:
+        _id: userId
+        age_filter_max: 1000
+        age_filter_min: 18
+        badges: []
+        bio: Swipe Right
+        birth_date: '2020-09-17T00:00:00.000Z'
+        create_date: '2020-09-17T00:00:00.000Z'
+        distance_filter: 100
+        email: noreply@gotinder.com
+        gender: 0
+        gender_filter: 1
+        instagram:
+          completed_initial_fetch: true
+          last_fetch_time: '2020-09-17T00:00:00.000Z'
+          media_count: 6
+          photos:
+            - id: id
+              image: url
+              thumbnail: url
+              ts: '0123456789'
+          username: user.name
+        interested_in:
+          - 1
+        jobs:
+          - company:
+              displayed: true
+              name: Rednit
+            title:
+              displayed: true
+              name: Developer
+        name: Kaktushose
+        photos:
+          - id: photoId
+            assets: []
+            type: image
+            created_at: '2020-09-17T00:00:00.000Z'
+            updated_at: '2020-09-17T00:00:00.000Z'
+            crop_info:
+              processed_by_bullseye: true
+              user_customized: false
+            url: 'https://images-ssl.gotinder.com/userId/original_photoId.png'
+            processedFiles:
+              - url: 'https://images-ssl.gotinder.com/userId/640x800_photoId.jpg'
+                height: 800
+                width: 640
+              - url: 'https://images-ssl.gotinder.com/userId/320x400_photoId.jpg'
+                height: 400
+                width: 320
+              - url: 'https://images-ssl.gotinder.com/userId/172x216_photoId.jpg'
+                height: 216
+                width: 172
+              - url: 'https://images-ssl.gotinder.com/userId/84x106_photoId.jpg'
+                height: 106
+                width: 84
+            fileName: photoId.jpg
+            extension: 'jpg,webp'
+            fbId: directupload
+            webp_qf:
+              - 75
+            rank: 0
+            score: 0.5
+            win_count: 1
+            phash:
+              version: pHash v1.0
+              value: 123456789
+            dhash:
+              version: dHash v1.0
+              value: 123456789
+        photo_optimizer_enabled: false
+        ping_time: '2021-09-20T13:34:42.870Z'
+        pos:
+          at: 0
+          lat: 0
+          lon: 0
+        pos_info:
+          country:
+            name: Germany
+            cc: DE
+            alpha3: DEU
+          timezone: Europe/Berlin
+        schools:
+          - displayed: true
+            metadata_id: ope_217800
+            name: Massachusetts Institute of Technology
+        show_gender_on_profile: false
+        can_create_squad: false
+    title: ''
+    properties:
+      _id:
+        type: string
+        minLength: 1
+      age_filter_max:
+        type: number
+      age_filter_min:
+        type: number
+      badges:
+        type: array
+        items:
+          type: object
+      bio:
+        type: string
+        minLength: 1
+      birth_date:
+        type: string
+        minLength: 1
+      create_date:
+        type: string
+        minLength: 1
+      distance_filter:
+        type: number
+      email:
+        type: string
+        minLength: 1
+      gender:
+        type: number
+      gender_filter:
+        type: number
+      instagram:
+        $ref: '#/definitions/Instagram'
+      interested_in:
+        type: array
+        items:
+          type: object
+      jobs:
+        type: array
+        uniqueItems: true
+        minItems: 1
+        items:
+          type: object
+          properties:
+            company:
+              type: object
+              properties:
+                displayed:
+                  type: boolean
+                name:
+                  type: string
+                  minLength: 1
+              required:
+                - displayed
+                - name
+            title:
+              type: object
+              properties:
+                displayed:
+                  type: boolean
+                name:
+                  type: string
+                  minLength: 1
+              required:
+                - displayed
+                - name
+      name:
+        type: string
+        minLength: 1
+      photos:
+        type: array
+        uniqueItems: true
+        minItems: 1
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+              minLength: 1
+            assets:
+              type: array
+              items:
+                type: object
+            type:
+              type: string
+              minLength: 1
+            created_at:
+              type: string
+              minLength: 1
+            updated_at:
+              type: string
+              minLength: 1
+            crop_info:
+              type: object
+              properties:
+                processed_by_bullseye:
+                  type: boolean
+                user_customized:
+                  type: boolean
+              required:
+                - processed_by_bullseye
+                - user_customized
+            url:
+              type: string
+              minLength: 1
+            processedFiles:
+              type: array
+              uniqueItems: true
+              minItems: 1
+              items:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    minLength: 1
+                  height:
+                    type: number
+                  width:
+                    type: number
+                required:
+                  - url
+                  - height
+                  - width
+            fileName:
+              type: string
+              minLength: 1
+            extension:
+              type: string
+              minLength: 1
+            fbId:
+              type: string
+              minLength: 1
+            webp_qf:
+              type: array
+              items:
+                type: object
+            rank:
+              type: number
+            score:
+              type: number
+            win_count:
+              type: number
+            phash:
+              type: object
+              properties:
+                version:
+                  type: string
+                  minLength: 1
+                value:
+                  type: number
+              required:
+                - version
+                - value
+            dhash:
+              type: object
+              properties:
+                version:
+                  type: string
+                  minLength: 1
+                value:
+                  type: number
+              required:
+                - version
+                - value
+          required:
+            - id
+            - type
+            - created_at
+            - updated_at
+            - url
+            - fileName
+            - extension
+            - fbId
+            - rank
+            - score
+            - win_count
+      photo_optimizer_enabled:
+        type: boolean
+      ping_time:
+        type: string
+        minLength: 1
+      pos:
+        type: object
+        required:
+          - at
+          - lat
+          - lon
+        properties:
+          at:
+            type: number
+          lat:
+            type: number
+          lon:
+            type: number
+      pos_info:
+        type: object
+        required:
+          - country
+          - timezone
+        properties:
+          country:
+            type: object
+            required:
+              - name
+              - cc
+              - alpha3
+            properties:
+              name:
+                type: string
+                minLength: 1
+              cc:
+                type: string
+                minLength: 1
+              alpha3:
+                type: string
+                minLength: 1
+          timezone:
+            type: string
+            minLength: 1
+      schools:
+        type: array
+        uniqueItems: true
+        minItems: 1
+        items:
+          type: object
+          properties:
+            displayed:
+              type: boolean
+            metadata_id:
+              type: string
+              minLength: 1
+            name:
+              type: string
+              minLength: 1
+          required:
+            - displayed
+            - metadata_id
+            - name
+      show_gender_on_profile:
+        type: boolean
+      can_create_squad:
+        type: boolean
+    required:
+      - _id
+      - age_filter_max
+      - age_filter_min
+      - badges
+      - bio
+      - birth_date
+      - create_date
+      - distance_filter
+      - email
+      - gender
+      - gender_filter
+      - instagram
+      - interested_in
+      - jobs
+      - name
+      - photos
+      - photo_optimizer_enabled
+      - ping_time
+      - pos
+      - pos_info
+      - schools
+      - show_gender_on_profile
+      - can_create_squad
+  Instagram:
+    description: Information about the connected instagram account of a user or profile
+    type: object
+    x-examples:
+      Successful Instagram Auth:
+        last_fetch_time: '2020-09-17T00:00:00.000Z'
+        completed_initial_fetch: true
+        photos:
+          - image: url
+            thumbnail: url
+            ts: '0123456789'
+        media_count: 1
+        username: user.name
+      Unsuccessful Instagram Auth:
+        completed_initial_fetch: false
+        photos: []
+        media_count: 0
+    properties:
+      last_fetch_time:
+        type: string
+      completed_initial_fetch:
+        type: boolean
+      photos:
+        type: array
+        uniqueItems: false
+        items:
+          type: object
+          properties:
+            image:
+              type: string
+            thumbnail:
+              type: string
+            ts:
+              type: string
+          required:
+            - image
+            - thumbnail
+            - ts
+      media_count:
+        type: number
+      username:
+        type: string
+    required:
+      - completed_initial_fetch
+      - photos
+      - media_count
+    title: ''
+  Spotify-Track:
+    description: a spotify track used in the top track or top artists
+    type: object
+    x-examples:
+      Example:
+        id: 4cOdK2wGLETKBW3PvgPWqT
+        name: Never Gonna Give You Up
+        album:
+          id: 5Z9iiGl2FcIfa3BMiv6OIw
+          name: Whenever You Need Somebody
+          images:
+            - height: 640
+              width: 640
+              url: 'https://i.scdn.co/image/ab67616d0000b2735755e164993798e0c9ef7d7a'
+            - height: 300
+              width: 300
+              url: 'https://i.scdn.co/image/ab67616d00001e025755e164993798e0c9ef7d7a'
+            - height: 64
+              width: 64
+              url: 'https://i.scdn.co/image/ab67616d000048515755e164993798e0c9ef7d7a'
+        artists:
+          - id: 0gxyHStUsqpMadRV0Di1Qt
+            name: Rick Astley
+        preview_url: 'https://p.scdn.co/mp3-preview/0b6da17f858f104337fac626c4bac972d3947564?cid=b06a803d686e4612bdc074e786e94062'
+        uri: 'spotify:track:4cOdK2wGLETKBW3PvgPWqT'
+    title: ''
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      album:
+        type: object
+        required:
+          - id
+          - name
+          - images
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+          images:
+            type: array
+            uniqueItems: false
+            items:
+              $ref: '#/definitions/Sized-Image'
+      artists:
+        type: array
+        uniqueItems: false
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+          required:
+            - id
+            - name
+      preview_url:
+        type: string
+      uri:
+        type: string
+    required:
+      - id
+      - name
+      - album
+      - artists
+      - preview_url
+      - uri
+  Spotify-Artist:
+    description: An artist used in the spotify top artists
+    type: object
+    x-examples:
+      Example:
+        id: 0gxyHStUsqpMadRV0Di1Qt
+        name: Rick Astley
+        selected: true
+        top_track:
+          id: 4cOdK2wGLETKBW3PvgPWqT
+          name: Never Gonna Give You Up
+          album:
+            id: 5Z9iiGl2FcIfa3BMiv6OIw
+            name: Whenever You Need Somebody
+            images:
+              - height: 640
+                width: 640
+                url: 'https://i.scdn.co/image/ab67616d0000b2735755e164993798e0c9ef7d7a'
+              - height: 300
+                width: 300
+                url: 'https://i.scdn.co/image/ab67616d00001e025755e164993798e0c9ef7d7a'
+              - height: 64
+                width: 64
+                url: 'https://i.scdn.co/image/ab67616d000048515755e164993798e0c9ef7d7a'
+          artists:
+            - id: 0gxyHStUsqpMadRV0Di1Qt
+              name: Rick Astley
+          preview_url: 'https://p.scdn.co/mp3-preview/0b6da17f858f104337fac626c4bac972d3947564?cid=b06a803d686e4612bdc074e786e94062'
+          uri: 'spotify:track:4cOdK2wGLETKBW3PvgPWqT'
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      selected:
+        type: boolean
+      top_track:
+        $ref: '#/definitions/Spotify-Track'
+    required:
+      - id
+      - name
+      - selected
+      - top_track
+  User:
+    title: User
+    type: object
+    properties:
+      id:
+        type: string
+  Sized-Image:
+    description: ''
+    type: object
+    x-examples:
+      Example:
+        height: 64
+        width: 64
+        url: 'https://cdn.webiste.com/url'
+    properties:
+      height:
+        type: number
+      width:
+        type: number
+      url:
+        type: string
+    required:
+      - height
+      - width
+      - url
+  Photo:
+    description: ''
+    type: object
+    x-examples:
+      Example:
+        id: photoId
+        assets: []
+        type: image
+        created_at: '2021-05-19T13:42:20.976Z'
+        updated_at: '2021-05-19T13:42:29.326Z'
+        crop_info:
+          user:
+            width_pct: 1
+            x_offset_pct: 0
+            height_pct: 0.8
+            y_offset_pct: 0
+          algo:
+            width_pct: 0.3155729
+            x_offset_pct: 0.1249982
+            height_pct: 0.35462007
+            y_offset_pct: 0.10779645
+          processed_by_bullseye: true
+          user_customized: false
+          faces:
+            - algo:
+                width_pct: 0.3155729
+                x_offset_pct: 0.1249982
+                height_pct: 0.35462007
+                y_offset_pct: 0.10779645
+              bounding_box_percentage: 11.19
+        url: 'https://images-ssl.gotinder.com/userId/original_photoId.png'
+        processedFiles:
+          - url: 'https://images-ssl.gotinder.com/userId/640x800_photoId.jpg'
+            height: 800
+            width: 640
+          - url: 'https://images-ssl.gotinder.com/userId/320x400_photoId.jpg'
+            height: 400
+            width: 320
+          - url: 'https://images-ssl.gotinder.com/userId/172x216_photoId.jpg'
+            height: 216
+            width: 172
+          - url: 'https://images-ssl.gotinder.com/userId/84x106_photoId.jpg'
+            height: 106
+            width: 84
+        fileName: photoId.jpg
+        extension: 'jpg,webp'
+        fbId: directupload
+        webp_qf:
+          - 75
+        rank: 0
+        score: 0.8558056
+        win_count: 1
+        phash:
+          version: pHash v1.0
+          value: 123456789
+        dhash:
+          version: dHash v1.0
+          value: 123456789
+    properties:
+      id:
+        type: string
+      assets:
+        type: array
+        items:
+          type: object
+      type:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      crop_info:
+        type: object
+        required:
+          - user
+          - algo
+          - processed_by_bullseye
+          - processed_by_bullseye - copy
+          - user_customized
+          - faces
+        properties:
+          user:
+            $ref: '#/definitions/Algo'
+          algo:
+            $ref: '#/definitions/Algo'
+          processed_by_bullseye:
+            type: boolean
+          processed_by_bullseye - copy:
+            type: boolean
+          user_customized:
+            type: boolean
+          faces:
+            type: array
+            uniqueItems: false
+            items:
+              $ref: '#/definitions/Algo'
+      url:
+        type: string
+      processedFiles:
+        type: array
+        uniqueItems: false
+        items:
+          $ref: '#/definitions/Sized-Image'
+      fileName:
+        type: string
+      extension:
+        type: string
+      fbId:
+        type: string
+      webp_qf:
+        type: array
+        items:
+          type: object
+      rank:
+        type: number
+      score:
+        type: number
+      win_count:
+        type: number
+      phash:
+        type: object
+        required:
+          - version
+          - value
+        properties:
+          version:
+            type: string
+          value:
+            type: number
+      dhash:
+        type: object
+        required:
+          - version
+          - value
+        properties:
+          version:
+            type: string
+          value:
+            type: number
+    required:
+      - id
+      - assets
+      - type
+      - created_at
+      - updated_at
+      - crop_info
+      - url
+      - processedFiles
+      - fileName
+      - extension
+      - fbId
+      - webp_qf
+      - rank
+      - score
+      - win_count
+      - phash
+      - dhash
+  Facial-Scope:
+    description: ''
+    type: object
+    properties:
+      width_pct:
+        type: number
+      x_offset_pct:
+        type: number
+      height_pct:
+        type: number
+      y_offset_pct:
+        type: number
+    required:
+      - width_pct
+      - x_offset_pct
+      - height_pct
+      - y_offset_pct
+    x-examples:
+      Example:
+        width_pct: 0.1
+        x_offset_pct: 0.2
+        height_pct: 0.3
+        y_offset_pct: 0.4
+securityDefinitions:
+  X-Auth-Token:
+    name: X-Auth-Token
+    type: apiKey
+    in: header
+security:
+  - X-Auth-Token: []
