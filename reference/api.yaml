@@ -655,9 +655,9 @@ definitions:
           - faces
         properties:
           user:
-            $ref: '#/definitions/Algo'
+            $ref: '#/definitions/Facial-Scope'
           algo:
-            $ref: '#/definitions/Algo'
+            $ref: '#/definitions/Facial-Scope'
           processed_by_bullseye:
             type: boolean
           processed_by_bullseye - copy:
@@ -668,7 +668,7 @@ definitions:
             type: array
             uniqueItems: false
             items:
-              $ref: '#/definitions/Algo'
+              $ref: '#/definitions/Facial-Scope'
       url:
         type: string
       processedFiles:
