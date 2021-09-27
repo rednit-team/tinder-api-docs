@@ -1025,6 +1025,96 @@ definitions:
     required:
       - type
       - string
+  Like-Preview:
+    description: ''
+    type: object
+    x-examples:
+      Example:
+        user:
+          _id: previewUserId
+          photos:
+            - id: photoId
+              crop_info:
+                user:
+                  width_pct: 1
+                  x_offset_pct: 0
+                  height_pct: 0.8
+                  y_offset_pct: 0
+                algo:
+                  width_pct: 0.3155729
+                  x_offset_pct: 0.1249982
+                  height_pct: 0.35462007
+                  y_offset_pct: 0.10779645
+                processed_by_bullseye: true
+                user_customized: false
+                faces:
+                  - algo:
+                      width_pct: 0.3155729
+                      x_offset_pct: 0.1249982
+                      height_pct: 0.35462007
+                      y_offset_pct: 0.10779645
+                    bounding_box_percentage: 11.19
+              url: 'https://preview.gotinder.com/previewUserId/original_photoId.png'
+              processedFiles:
+                - url: 'https://preview.gotinder.com/previewUserId/640x800_photoId.jpg'
+                  height: 800
+                  width: 640
+                - url: 'https://preview.gotinder.com/previewUserId/320x400_photoId.jpg'
+                  height: 400
+                  width: 320
+                - url: 'https://preview.gotinder.com/previewUserId/172x216_photoId.jpg'
+                  height: 216
+                  width: 172
+                - url: 'https://preview.gotinder.com/previewUserId/84x106_photoId.jpg'
+                  height: 106
+                  width: 84
+              fileName: photoId.jpg
+              extension: 'jpg,webp'
+              media_type: image
+          recently_active: true
+    properties:
+      user:
+        type: object
+        required:
+          - _id
+          - photos
+          - recently_active
+        properties:
+          _id:
+            type: string
+          photos:
+            type: array
+            uniqueItems: false
+            items:
+              type: object
+              properties:
+                id:
+                  type: string
+                crop_info:
+                  $ref: '#/definitions/Crop-Info'
+                url:
+                  type: string
+                processedFiles:
+                  type: array
+                  uniqueItems: false
+                  items:
+                    $ref: '#/definitions/Sized-Image'
+                fileName:
+                  type: string
+                extension:
+                  type: string
+                media_type:
+                  type: string
+              required:
+                - id
+                - url
+                - fileName
+                - extension
+                - media_type
+          recently_active:
+            type: boolean
+    required:
+      - user
 securityDefinitions:
   X-Auth-Token:
     name: X-Auth-Token
