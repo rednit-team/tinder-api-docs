@@ -114,3 +114,28 @@ The following fields are arrays but never have more then one value in it:
 - `jobs`
 - `schools`
 - `badges`
+
+## `_id` and `id`
+
+Normally, objects have an `_id` field. The `_` is also something you can wonder about, but it gets really interesting if you look at the match object. For some reason, a match object has one field named `_id` as well as one one field named `id`, always containing the same id.  
+
+## Wrong Request Methods
+
+Tinder almost never uses `PUT` requets. Instead you make `POST` request that often work like `PATCH` requets. For instance, to update your search preferences you send a `POST` request to `/profile` (or `/v2/profile` *sigh*) with the following payload:
+
+```json
+{
+  "user": {
+      "age_filter_min": age_filter_min,
+      "age_filter_max": age_filter_max,
+      "gender_filter": gender_filter,
+      "gender": gender,
+      "distance_filter": distance_filter
+  }
+}
+```
+
+The API will then return the whole profile object. 
+
+Another great example is the generation of gateway tokens. You can generate a token by sending a `GET` request to `https://api.gotinder.com/ws/generate`. This returns a new token everytime. As we all know, `GET` endpoints should be idempotent, which this endpoint is cleary not.
+
