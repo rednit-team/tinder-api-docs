@@ -208,6 +208,234 @@ definitions:
       - schools
       - show_gender_on_profile
       - can_create_squad
+  User:
+    description: A tinder user
+    type: object
+    x-examples:
+      Example:
+        common_friends: []
+        common_friend_count: 0
+        spotify_theme_track:
+          id: 4Mp72AzdE8PP2A9LXaTiXJ
+          name: Get It Right
+          album:
+            id: 4Oacw8imhP7mtX0yRiRCDX
+            name: Permanent Midnight
+            images:
+              - height: 640
+                width: 640
+                url: 'https://i.scdn.co/image/ab67616d0000b2732210a267b2250c444d7d6add'
+              - height: 300
+                width: 300
+                url: 'https://i.scdn.co/image/ab67616d00001e022210a267b2250c444d7d6add'
+              - height: 64
+                width: 64
+                url: 'https://i.scdn.co/image/ab67616d000048512210a267b2250c444d7d6add'
+          artists:
+            - id: 2gIGkRqCo4NK2PUCI8u4aQ
+              name: Left Boy
+          preview_url: 'https://p.scdn.co/mp3-preview/b19a92a254a70c0a3891af266a796ab83834b5df?cid=b06a803d686e4612bdc074e786e94062'
+          uri: 'spotify:track:4Mp72AzdE8PP2A9LXaTiXJ'
+        distance_mi: 31
+        connection_count: 0
+        common_connections: []
+        bio: Swipe Left
+        birth_date: '2002-09-30T12:13:59.039Z'
+        name: MeerBiene
+        jobs: []
+        schools: []
+        teasers:
+          - type: job
+            string: Developer
+        gender: -1
+        show_gender_on_profile: false
+        birth_date_info: 'fuzzy birth date active, not displaying real birth_date'
+        ping_time: '2014-12-09T00:00:00.000Z'
+        badges:
+          - type: selfie_verified
+        photos:
+          - id: photoId
+            assets: []
+            type: image
+            created_at: '2021-05-19T13:42:20.976Z'
+            updated_at: '2021-05-19T13:42:29.326Z'
+            crop_info:
+              user:
+                width_pct: 1
+                x_offset_pct: 0
+                height_pct: 0.8
+                y_offset_pct: 0
+              algo:
+                width_pct: 0.3155729
+                x_offset_pct: 0.1249982
+                height_pct: 0.35462007
+                y_offset_pct: 0.10779645
+              processed_by_bullseye: true
+              user_customized: false
+              faces:
+                - algo:
+                    width_pct: 0.3155729
+                    x_offset_pct: 0.1249982
+                    height_pct: 0.35462007
+                    y_offset_pct: 0.10779645
+                  bounding_box_percentage: 11.19
+            url: 'https://images-ssl.gotinder.com/userId/original_photoId.png'
+            processedFiles:
+              - url: 'https://images-ssl.gotinder.com/userId/640x800_photoId.jpg'
+                height: 800
+                width: 640
+              - url: 'https://images-ssl.gotinder.com/userId/320x400_photoId.jpg'
+                height: 400
+                width: 320
+              - url: 'https://images-ssl.gotinder.com/userId/172x216_photoId.jpg'
+                height: 216
+                width: 172
+              - url: 'https://images-ssl.gotinder.com/userId/84x106_photoId.jpg'
+                height: 106
+                width: 84
+            fileName: photoId.jpg
+            extension: 'jpg,webp'
+            fbId: directupload
+            webp_qf:
+              - 75
+            rank: 0
+            score: 0.8558056
+            win_count: 1
+            phash:
+              version: pHash v1.0
+              value: 123456789
+            dhash:
+              version: dHash v1.0
+              value: 123456789
+        common_likes: []
+        common_like_count: 0
+        common_interests: []
+        selected_descriptors:
+          - id: de_6
+            name: Drink of Choice
+            prompt: Cheers! What drink are you toasting with?
+            type: single_selection_set
+            icon_url: 'https://static-assets.gotinder.com/icons/descriptors/drink_of_choice@3x.png'
+            icon_urls:
+              - url: 'https://static-assets.gotinder.com/icons/descriptors/drink_of_choice@1x.png'
+                quality: 1x
+                width: 22
+                height: 22
+              - url: 'https://static-assets.gotinder.com/icons/descriptors/drink_of_choice@2x.png'
+                quality: 2x
+                width: 44
+                height: 44
+              - url: 'https://static-assets.gotinder.com/icons/descriptors/drink_of_choice@3x.png'
+                quality: 3x
+                width: 66
+                height: 66
+            choice_selections:
+              - id: '2'
+                name: Beer
+        s_number: 123456789
+        _id: userId
+        is_tinder_u: false
+    properties:
+      common_friends:
+        type: array
+        items:
+          type: object
+      common_friend_count:
+        type: number
+      spotify_theme_track:
+        $ref: '#/definitions/Spotify-Track'
+      distance_mi:
+        type: number
+      connection_count:
+        type: number
+      common_connections:
+        type: array
+        items:
+          type: object
+      bio:
+        type: string
+      birth_date:
+        type: string
+      name:
+        type: string
+      jobs:
+        type: array
+        items:
+          $ref: '#/definitions/Job'
+      schools:
+        type: array
+        items:
+          $ref: '#/definitions/School'
+      teasers:
+        type: array
+        items:
+          $ref: '#/definitions/Teaser'
+      gender:
+        type: number
+      show_gender_on_profile:
+        type: boolean
+      birth_date_info:
+        type: string
+      ping_time:
+        type: string
+      badges:
+        type: array
+        uniqueItems: false
+        items:
+          $ref: '#/definitions/Badge'
+      photos:
+        type: array
+        uniqueItems: false
+        items:
+          $ref: '#/definitions/Photo'
+      common_likes:
+        type: array
+        items:
+          type: object
+      common_like_count:
+        type: number
+      common_interests:
+        type: array
+        items:
+          type: object
+      selected_descriptors:
+        type: array
+        uniqueItems: true
+        minItems: 1
+        items:
+          $ref: '#/definitions/Descriptor'
+      s_number:
+        type: number
+      _id:
+        type: string
+      is_tinder_u:
+        type: boolean
+    required:
+      - common_friends
+      - common_friend_count
+      - spotify_theme_track
+      - distance_mi
+      - connection_count
+      - common_connections
+      - bio
+      - birth_date
+      - name
+      - jobs
+      - schools
+      - teasers
+      - gender
+      - show_gender_on_profile
+      - birth_date_info
+      - ping_time
+      - badges
+      - photos
+      - common_likes
+      - common_like_count
+      - common_interests
+      - s_number
+      - _id
+      - is_tinder_u
+    title: ''
   Instagram:
     description: Information about the connected instagram account of a user or profile
     type: object
@@ -369,31 +597,6 @@ definitions:
       - name
       - selected
       - top_track
-  User:
-    title: User
-    type: object
-    properties:
-      id:
-        type: string
-  Sized-Image:
-    description: A sized user image or album cover
-    type: object
-    x-examples:
-      Example:
-        height: 64
-        width: 64
-        url: 'https://cdn.webiste.com/url'
-    properties:
-      height:
-        type: number
-      width:
-        type: number
-      url:
-        type: string
-    required:
-      - height
-      - width
-      - url
   Photo:
     description: A user photo
     type: object
@@ -528,6 +731,28 @@ definitions:
       - win_count
       - phash
       - dhash
+  Sized-Image:
+    description: A sized user image or album cover
+    type: object
+    x-examples:
+      Example:
+        height: 64
+        width: 64
+        url: 'https://cdn.webiste.com/url'
+    properties:
+      height:
+        type: number
+      width:
+        type: number
+      url:
+        type: string
+      quality:
+        type: string
+        description: only used in Descriptor images
+    required:
+      - height
+      - width
+      - url
   Crop-Info:
     description: Facial recognition information
     type: object
@@ -579,19 +804,9 @@ definitions:
     required:
       - processed_by_bullseye
       - user_customized
-  Badge:
-    description: Profile badges
-    type: object
-    x-examples:
-      Selfie Verified:
-        type: selfie_verified
-    properties:
-      type:
-        type: string
-    required:
-      - type
+    x-internal: false
   Facial-Scope:
-    description: ''
+    description: Facial recognition coordinates
     type: object
     properties:
       width_pct:
@@ -613,7 +828,18 @@ definitions:
         x_offset_pct: 0.1799806572496891
         height_pct: 0.7370133028714918
         y_offset_pct: 0.17256688373629003
-    x-internal: true
+    x-internal: false
+  Badge:
+    description: Profile badges
+    type: object
+    x-examples:
+      Selfie Verified:
+        type: selfie_verified
+    properties:
+      type:
+        type: string
+    required:
+      - type
   Job:
     description: Company and job title information
     type: object
@@ -654,6 +880,44 @@ definitions:
             type: boolean
           name:
             type: string
+  School:
+    description: School information
+    type: object
+    x-examples:
+      Example:
+        displayed: true
+        metadata_id: ope_217800
+        name: Massachusetts Institute of Technology
+    properties:
+      displayed:
+        type: boolean
+      metadata_id:
+        type: string
+      name:
+        type: string
+    required:
+      - displayed
+      - metadata_id
+      - name
+  Position:
+    description: Position information about the coordinates
+    type: object
+    properties:
+      at:
+        type: number
+      lat:
+        type: number
+      lon:
+        type: number
+    required:
+      - at
+      - lat
+      - lon
+    x-examples:
+      Example:
+        at: 0
+        lat: 0
+        lon: 0
   Position-Info:
     description: Position information about the country
     type: object
@@ -683,44 +947,84 @@ definitions:
     required:
       - country
       - timezone
-  Position:
-    description: Position information about the coordinates
-    type: object
-    properties:
-      at:
-        type: number
-      lat:
-        type: number
-      lon:
-        type: number
-    required:
-      - at
-      - lat
-      - lon
-    x-examples:
-      Example:
-        at: 0
-        lat: 0
-        lon: 0
-  School:
-    description: School information
+  Descriptor:
+    description: 'A single Lifestyle question '
     type: object
     x-examples:
-      Example:
-        displayed: true
-        metadata_id: ope_217800
-        name: Massachusetts Institute of Technology
+      Zodiac:
+        id: de_1
+        name: Zodiac
+        prompt: What's your zodiac sign?
+        type: single_selection_set
+        icon_url: 'https://static-assets.gotinder.com/icons/descriptors/astrological_sign@3x.png'
+        icon_urls:
+          - url: 'https://static-assets.gotinder.com/icons/descriptors/astrological_sign@1x.png'
+            quality: 1x
+            width: 22
+            height: 22
+          - url: 'https://static-assets.gotinder.com/icons/descriptors/astrological_sign@2x.png'
+            quality: 2x
+            width: 44
+            height: 44
+          - url: 'https://static-assets.gotinder.com/icons/descriptors/astrological_sign@3x.png'
+            quality: 3x
+            width: 66
+            height: 66
+        choice_selections:
+          - id: '10'
+            name: Libra
     properties:
-      displayed:
-        type: boolean
-      metadata_id:
+      id:
         type: string
       name:
         type: string
+      prompt:
+        type: string
+      type:
+        type: string
+      icon_url:
+        type: string
+      icon_urls:
+        type: array
+        uniqueItems: false
+        items:
+          $ref: '#/definitions/Sized-Image'
+      choice_selections:
+        type: array
+        uniqueItems: false
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+          required:
+            - id
+            - name
     required:
-      - displayed
-      - metadata_id
+      - id
       - name
+      - prompt
+      - type
+      - icon_url
+      - icon_urls
+      - choice_selections
+  Teaser:
+    description: ''
+    type: object
+    x-examples:
+      Example:
+        type: job
+        string: Developer
+    properties:
+      type:
+        type: string
+      string:
+        type: string
+    required:
+      - type
+      - string
 securityDefinitions:
   X-Auth-Token:
     name: X-Auth-Token
