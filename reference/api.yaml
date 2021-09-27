@@ -38,7 +38,8 @@ definitions:
         _id: userId
         age_filter_max: 1000
         age_filter_min: 18
-        badges: []
+        badges:
+          - type: selfie_verified
         bio: Swipe Right
         birth_date: '2020-09-17T00:00:00.000Z'
         create_date: '2020-09-17T00:00:00.000Z'
@@ -122,10 +123,10 @@ definitions:
         show_gender_on_profile: false
         can_create_squad: false
     title: ''
+    x-internal: false
     properties:
       _id:
         type: string
-        minLength: 1
       age_filter_max:
         type: number
       age_filter_min:
@@ -133,21 +134,17 @@ definitions:
       badges:
         type: array
         items:
-          type: object
+          $ref: '#/definitions/Badge'
       bio:
         type: string
-        minLength: 1
       birth_date:
         type: string
-        minLength: 1
       create_date:
         type: string
-        minLength: 1
       distance_filter:
         type: number
       email:
         type: string
-        minLength: 1
       gender:
         type: number
       gender_filter:
@@ -160,205 +157,29 @@ definitions:
           type: object
       jobs:
         type: array
-        uniqueItems: true
-        minItems: 1
+        uniqueItems: false
         items:
-          type: object
-          properties:
-            company:
-              type: object
-              properties:
-                displayed:
-                  type: boolean
-                name:
-                  type: string
-                  minLength: 1
-              required:
-                - displayed
-                - name
-            title:
-              type: object
-              properties:
-                displayed:
-                  type: boolean
-                name:
-                  type: string
-                  minLength: 1
-              required:
-                - displayed
-                - name
+          $ref: '#/definitions/Job'
       name:
         type: string
-        minLength: 1
       photos:
         type: array
-        uniqueItems: true
-        minItems: 1
+        uniqueItems: false
         items:
-          type: object
-          properties:
-            id:
-              type: string
-              minLength: 1
-            assets:
-              type: array
-              items:
-                type: object
-            type:
-              type: string
-              minLength: 1
-            created_at:
-              type: string
-              minLength: 1
-            updated_at:
-              type: string
-              minLength: 1
-            crop_info:
-              type: object
-              properties:
-                processed_by_bullseye:
-                  type: boolean
-                user_customized:
-                  type: boolean
-              required:
-                - processed_by_bullseye
-                - user_customized
-            url:
-              type: string
-              minLength: 1
-            processedFiles:
-              type: array
-              uniqueItems: true
-              minItems: 1
-              items:
-                type: object
-                properties:
-                  url:
-                    type: string
-                    minLength: 1
-                  height:
-                    type: number
-                  width:
-                    type: number
-                required:
-                  - url
-                  - height
-                  - width
-            fileName:
-              type: string
-              minLength: 1
-            extension:
-              type: string
-              minLength: 1
-            fbId:
-              type: string
-              minLength: 1
-            webp_qf:
-              type: array
-              items:
-                type: object
-            rank:
-              type: number
-            score:
-              type: number
-            win_count:
-              type: number
-            phash:
-              type: object
-              properties:
-                version:
-                  type: string
-                  minLength: 1
-                value:
-                  type: number
-              required:
-                - version
-                - value
-            dhash:
-              type: object
-              properties:
-                version:
-                  type: string
-                  minLength: 1
-                value:
-                  type: number
-              required:
-                - version
-                - value
-          required:
-            - id
-            - type
-            - created_at
-            - updated_at
-            - url
-            - fileName
-            - extension
-            - fbId
-            - rank
-            - score
-            - win_count
+          $ref: '#/definitions/Photo'
       photo_optimizer_enabled:
         type: boolean
       ping_time:
         type: string
-        minLength: 1
       pos:
-        type: object
-        required:
-          - at
-          - lat
-          - lon
-        properties:
-          at:
-            type: number
-          lat:
-            type: number
-          lon:
-            type: number
+        $ref: '#/definitions/Position'
       pos_info:
-        type: object
-        required:
-          - country
-          - timezone
-        properties:
-          country:
-            type: object
-            required:
-              - name
-              - cc
-              - alpha3
-            properties:
-              name:
-                type: string
-                minLength: 1
-              cc:
-                type: string
-                minLength: 1
-              alpha3:
-                type: string
-                minLength: 1
-          timezone:
-            type: string
-            minLength: 1
+        $ref: '#/definitions/Position-Info'
       schools:
         type: array
-        uniqueItems: true
-        minItems: 1
+        uniqueItems: false
         items:
-          type: object
-          properties:
-            displayed:
-              type: boolean
-            metadata_id:
-              type: string
-              minLength: 1
-            name:
-              type: string
-              minLength: 1
-          required:
-            - displayed
-            - metadata_id
-            - name
+          $ref: '#/definitions/School'
       show_gender_on_profile:
         type: boolean
       can_create_squad:
@@ -435,7 +256,7 @@ definitions:
       - media_count
     title: ''
   Spotify-Track:
-    description: a spotify track used in the top track or top artists
+    description: A spotify track used in the top track or top artists
     type: object
     x-examples:
       Example:
@@ -555,7 +376,7 @@ definitions:
       id:
         type: string
   Sized-Image:
-    description: ''
+    description: A sized user image or album cover
     type: object
     x-examples:
       Example:
@@ -574,7 +395,7 @@ definitions:
       - width
       - url
   Photo:
-    description: ''
+    description: A user photo
     type: object
     x-examples:
       Example:
@@ -645,30 +466,7 @@ definitions:
       updated_at:
         type: string
       crop_info:
-        type: object
-        required:
-          - user
-          - algo
-          - processed_by_bullseye
-          - processed_by_bullseye - copy
-          - user_customized
-          - faces
-        properties:
-          user:
-            $ref: '#/definitions/Facial-Scope'
-          algo:
-            $ref: '#/definitions/Facial-Scope'
-          processed_by_bullseye:
-            type: boolean
-          processed_by_bullseye - copy:
-            type: boolean
-          user_customized:
-            type: boolean
-          faces:
-            type: array
-            uniqueItems: false
-            items:
-              $ref: '#/definitions/Facial-Scope'
+        $ref: '#/definitions/Crop-Info'
       url:
         type: string
       processedFiles:
@@ -730,6 +528,68 @@ definitions:
       - win_count
       - phash
       - dhash
+  Crop-Info:
+    description: Facial recognition information
+    type: object
+    x-examples:
+      With Face:
+        user:
+          width_pct: 1
+          x_offset_pct: 0
+          height_pct: 0.8
+          y_offset_pct: 0.1410735351720359
+        algo:
+          width_pct: 0.6774477237602696
+          x_offset_pct: 0.1799806572496891
+          height_pct: 0.7370133028714918
+          y_offset_pct: 0.17256688373629003
+        processed_by_bullseye: true
+        user_customized: false
+        faces:
+          - algo:
+              width_pct: 0.6774477237602696
+              x_offset_pct: 0.1799806572496891
+              height_pct: 0.7370133028714918
+              y_offset_pct: 0.17256688373629003
+            bounding_box_percentage: 49.93
+      Without Face:
+        processed_by_bullseye: true
+        user_customized: true
+    properties:
+      user:
+        $ref: '#/definitions/Facial-Scope'
+      algo:
+        $ref: '#/definitions/Facial-Scope'
+      processed_by_bullseye:
+        type: boolean
+      user_customized:
+        type: boolean
+      faces:
+        type: array
+        uniqueItems: false
+        items:
+          type: object
+          properties:
+            algo:
+              $ref: '#/definitions/Facial-Scope'
+            bounding_box_percentage:
+              type: number
+          required:
+            - bounding_box_percentage
+    required:
+      - processed_by_bullseye
+      - user_customized
+  Badge:
+    description: Profile badges
+    type: object
+    x-examples:
+      Selfie Verified:
+        type: selfie_verified
+    properties:
+      type:
+        type: string
+    required:
+      - type
   Facial-Scope:
     description: ''
     type: object
@@ -748,11 +608,119 @@ definitions:
       - height_pct
       - y_offset_pct
     x-examples:
+      example-1:
+        width_pct: 0.6774477237602696
+        x_offset_pct: 0.1799806572496891
+        height_pct: 0.7370133028714918
+        y_offset_pct: 0.17256688373629003
+    x-internal: true
+  Job:
+    description: Company and job title information
+    type: object
+    x-examples:
+      Company & Title:
+        company:
+          displayed: true
+          name: Tinder
+        title:
+          displayed: true
+          name: Developer
+      Only Company:
+        company:
+          displayed: true
+          name: Tinder
+      Only Title:
+        title:
+          displayed: true
+          name: Developer
+    properties:
+      company:
+        type: object
+        required:
+          - displayed
+          - name
+        properties:
+          displayed:
+            type: boolean
+          name:
+            type: string
+      title:
+        type: object
+        required:
+          - displayed
+          - name
+        properties:
+          displayed:
+            type: boolean
+          name:
+            type: string
+  Position-Info:
+    description: Position information about the country
+    type: object
+    x-examples:
       Example:
-        width_pct: 0.1
-        x_offset_pct: 0.2
-        height_pct: 0.3
-        y_offset_pct: 0.4
+        country:
+          name: Germany
+          cc: DE
+          alpha3: DEU
+        timezone: Europe/Berlin
+    properties:
+      country:
+        type: object
+        required:
+          - name
+          - cc
+          - alpha3
+        properties:
+          name:
+            type: string
+          cc:
+            type: string
+          alpha3:
+            type: string
+      timezone:
+        type: string
+    required:
+      - country
+      - timezone
+  Position:
+    description: Position information about the coordinates
+    type: object
+    properties:
+      at:
+        type: number
+      lat:
+        type: number
+      lon:
+        type: number
+    required:
+      - at
+      - lat
+      - lon
+    x-examples:
+      Example:
+        at: 0
+        lat: 0
+        lon: 0
+  School:
+    description: School information
+    type: object
+    x-examples:
+      Example:
+        displayed: true
+        metadata_id: ope_217800
+        name: Massachusetts Institute of Technology
+    properties:
+      displayed:
+        type: boolean
+      metadata_id:
+        type: string
+      name:
+        type: string
+    required:
+      - displayed
+      - metadata_id
+      - name
 securityDefinitions:
   X-Auth-Token:
     name: X-Auth-Token
