@@ -90,13 +90,13 @@ The following fields will be empty in the response if the value is ment to be em
 
 The following fields will not be present in the response if the value is ment to be empty.
 
-- Profile Object
-  - `city`
-
 - User Object
   - `city`
   - `selected_descriptors`
-  - `experiment_info`
+  - `sexual_orientations`
+  - `spotify_top_artists`
+  - `spotify_common_top_artists_count`
+  - `spotify_theme_track`
   
 - Photo Object 
 
