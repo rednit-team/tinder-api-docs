@@ -1577,6 +1577,236 @@ definitions:
       - name
       - ping_time
       - photos
+  Message:
+    description: ''
+    type: object
+    x-examples:
+      Normal Message:
+        _id: messageId
+        match_id: matchId
+        sent_date: '2021-08-13T18:04:13.902Z'
+        message: Hello World
+        to: selfUserId
+        from: matchedUserId
+        created_date: '2021-08-13T18:04:13.902Z'
+        timestamp: 1628877853902
+      GIF:
+        _id: messageId
+        match_id: matchId
+        sent_date: '2021-08-13T18:04:13.902Z'
+        message: 'https://media.tenor.com/images/0aecf7afed79bdfe5f09884a58013eb5/tenor.gif?width=498&height=373'
+        to: selfUserId
+        from: matchedUserId
+        created_date: '2021-08-13T18:04:13.902Z'
+        timestamp: 1628877853902
+        fixed_height: 'https://media.tenor.com/images/33500dcafdfb87e535361c0e0fd8d3bc/tenor.gif?width=220&height=165'
+        type: gif
+      Contact Card:
+        _id: messageId
+        match_id: matchId
+        sent_date: '2021-08-13T18:04:13.902Z'
+        message: user.name
+        to: selfUserId
+        from: matchedUserId
+        created_date: '2021-08-13T18:04:13.902Z'
+        timestamp: 1628877853902
+        type: contact_card
+        contact_card:
+          contact_id: user.name
+          contact_type: instagram
+          deeplink: 'https://instagram.com/name'
+      Song:
+        _id: messageId
+        match_id: matchId
+        sent_date: '2021-08-13T18:04:13.902Z'
+        message: 'https://open.spotify.com/track/5Z9KJZvQzH6PFmb8SNkxuk'
+        to: selfUserId
+        from: matchedUserId
+        created_date: '2021-08-13T18:04:13.902Z'
+        timestamp: 1628877853902
+        type: song
+        song:
+          name: INDUSTRY BABY (feat. Jack Harlow)
+          id: 5Z9KJZvQzH6PFmb8SNkxuk
+          artists:
+            - name: Lil Nas X
+              href: 'https://api.spotify.com/v1/artists/7jVv8c5Fj3E9VhNjxT4snq'
+              id: 7jVv8c5Fj3E9VhNjxT4snq
+              type: artist
+              external_urls:
+                spotify: 'https://open.spotify.com/artist/7jVv8c5Fj3E9VhNjxT4snq'
+              uri: 'spotify:artist:7jVv8c5Fj3E9VhNjxT4snq'
+            - name: Jack Harlow
+              href: 'https://api.spotify.com/v1/artists/2LIk90788K0zvyj2JJVwkJ'
+              id: 2LIk90788K0zvyj2JJVwkJ
+              type: artist
+              external_urls:
+                spotify: 'https://open.spotify.com/artist/2LIk90788K0zvyj2JJVwkJ'
+              uri: 'spotify:artist:2LIk90788K0zvyj2JJVwkJ'
+          album:
+            name: MONTERO
+            images:
+              - width: 640
+                url: 'https://i.scdn.co/image/ab67616d0000b273be82673b5f79d9658ec0a9fd'
+                height: 640
+              - width: 300
+                url: 'https://i.scdn.co/image/ab67616d00001e02be82673b5f79d9658ec0a9fd'
+                height: 300
+              - width: 64
+                url: 'https://i.scdn.co/image/ab67616d00004851be82673b5f79d9658ec0a9fd'
+                height: 64
+          url: 'https://p.scdn.co/mp3-preview/c1cb40d748692992bd5e476fc17ffe16f31016e3?cid=b06a803d686e4612bdc074e786e94062'
+      Sticker:
+        _id: messageId
+        match_id: matchId
+        sent_date: '2021-08-13T18:04:13.902Z'
+        message: 'https://media.tenor.com/images/0aecf7afed79bdfe5f09884a58013eb5/tenor.gif?width=498&height=373'
+        to: selfUserId
+        from: matchedUserId
+        created_date: '2021-08-13T18:04:13.902Z'
+        timestamp: 1628877853902
+        fixed_height: 'https://media.tenor.com/images/33500dcafdfb87e535361c0e0fd8d3bc/tenor.gif?width=220&height=165'
+        type: sticker
+    properties:
+      _id:
+        type: string
+      match_id:
+        type: string
+      sent_date:
+        type: string
+      message:
+        type: string
+      to:
+        type: string
+      from:
+        type: string
+      created_date:
+        type: string
+      timestamp:
+        type: number
+      fixed_height:
+        type: string
+      type:
+        type: string
+      contact_card:
+        type: object
+        properties:
+          contact_id:
+            type: string
+          contact_type:
+            type: string
+          deeplink:
+            type: string
+        required:
+          - contact_id
+          - contact_type
+      song:
+        $ref: '#/definitions/Song-Attachment'
+    required:
+      - _id
+      - match_id
+      - sent_date
+      - message
+      - to
+      - from
+      - created_date
+      - timestamp
+  Song-Attachment:
+    description: ''
+    type: object
+    x-examples:
+      example-1:
+        song:
+          name: INDUSTRY BABY (feat. Jack Harlow)
+          id: 5Z9KJZvQzH6PFmb8SNkxuk
+          artists:
+            - name: Lil Nas X
+              href: 'https://api.spotify.com/v1/artists/7jVv8c5Fj3E9VhNjxT4snq'
+              id: 7jVv8c5Fj3E9VhNjxT4snq
+              type: artist
+              external_urls:
+                spotify: 'https://open.spotify.com/artist/7jVv8c5Fj3E9VhNjxT4snq'
+              uri: 'spotify:artist:7jVv8c5Fj3E9VhNjxT4snq'
+            - name: Jack Harlow
+              href: 'https://api.spotify.com/v1/artists/2LIk90788K0zvyj2JJVwkJ'
+              id: 2LIk90788K0zvyj2JJVwkJ
+              type: artist
+              external_urls:
+                spotify: 'https://open.spotify.com/artist/2LIk90788K0zvyj2JJVwkJ'
+              uri: 'spotify:artist:2LIk90788K0zvyj2JJVwkJ'
+          album:
+            name: MONTERO
+            images:
+              - width: 640
+                url: 'https://i.scdn.co/image/ab67616d0000b273be82673b5f79d9658ec0a9fd'
+                height: 640
+              - width: 300
+                url: 'https://i.scdn.co/image/ab67616d00001e02be82673b5f79d9658ec0a9fd'
+                height: 300
+              - width: 64
+                url: 'https://i.scdn.co/image/ab67616d00004851be82673b5f79d9658ec0a9fd'
+                height: 64
+          url: 'https://p.scdn.co/mp3-preview/c1cb40d748692992bd5e476fc17ffe16f31016e3?cid=b06a803d686e4612bdc074e786e94062'
+    properties:
+      song:
+        type: object
+        required:
+          - name
+          - id
+          - artists
+          - album
+          - url
+        properties:
+          name:
+            type: string
+          id:
+            type: string
+          artists:
+            type: array
+            uniqueItems: false
+            items:
+              type: object
+              properties:
+                name:
+                  type: string
+                href:
+                  type: string
+                id:
+                  type: string
+                type:
+                  type: string
+                external_urls:
+                  type: object
+                  properties:
+                    spotify:
+                      type: string
+                  required:
+                    - spotify
+                uri:
+                  type: string
+              required:
+                - name
+                - href
+                - id
+                - type
+                - uri
+          album:
+            type: object
+            required:
+              - name
+              - images
+            properties:
+              name:
+                type: string
+              images:
+                type: array
+                uniqueItems: false
+                items:
+                  $ref: '#/definitions/Sized-Image'
+          url:
+            type: string
+    required:
+      - song
 securityDefinitions:
   X-Auth-Token:
     name: X-Auth-Token

@@ -38,6 +38,7 @@ Each endpoint that returns user information returns slightly different data. Thi
 - User that liked me
 - Matched User
 
+On top of that, each user object has it's own photo object (╯°□°）╯︵ ┻━┻
 
 ### Duplicated Methods
 
@@ -115,9 +116,12 @@ The following fields are arrays but never have more then one value in it:
 - `schools`
 - `badges`
 
-## `_id` and `id`
+## Match
 
-Normally, objects have an `_id` field. The `_` is also something you can wonder about, but it gets really interesting if you look at the match object. For some reason, a match object has one field named `_id` as well as one one field named `id`, always containing the same id.  
+- The match object has a `messages` array and a `message_count`. Both values are always empty. 
+
+
+- Normally, objects have an `_id` field. The `_` is also something you can wonder about,   but it gets really interesting if you look at the match object. For some reason, a match   object has one field named `_id` as well as one one field named `id`, always containing   the same id.  
 
 ## Wrong Request Methods
 
