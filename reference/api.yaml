@@ -848,7 +848,7 @@ definitions:
       - extension
       - media_type
   Match-Photo:
-    description: ''
+    description: A photo inside a user object inside a match object
     type: object
     x-examples:
       Example:
@@ -1341,6 +1341,242 @@ definitions:
     required:
       - id
       - name
+  Match:
+    description: ''
+    type: object
+    x-examples:
+      Example:
+        _id: selfUserIdmatchedUserId
+        id: selfUserIdmatchedUserId
+        closed: false
+        common_friend_count: 0
+        common_like_count: 0
+        created_date: '2021-09-21T07:45:56.636Z'
+        dead: false
+        last_activity_date: '2021-09-21T07:45:56.636Z'
+        message_count: 0
+        messages: []
+        participants:
+          - matchedUserId
+        pending: false
+        is_super_like: false
+        is_boost_match: false
+        is_super_boost_match: false
+        is_experiences_match: false
+        is_fast_match: false
+        is_opener: true
+        person:
+          _id: matchedUserId
+          badges: []
+          bio: Hello World
+          birth_date: '2002-10-06T11:19:48.354Z'
+          gender: 1
+          name: Snowland
+          ping_time: '2014-12-09T00:00:00.000Z'
+          photos:
+            - id: photoId
+              crop_info:
+                user:
+                  width_pct: 1
+                  x_offset_pct: 0
+                  height_pct: 0.8
+                  y_offset_pct: 0
+                algo:
+                  width_pct: 0.5192223265883513
+                  x_offset_pct: 0.2525442640646361
+                  height_pct: 0.5761317486129701
+                  y_offset_pct: 0.005794935673475265
+                processed_by_bullseye: true
+                user_customized: false
+                faces:
+                  - algo:
+                      width_pct: 0.5192223265883513
+                      x_offset_pct: 0.2525442640646361
+                      height_pct: 0.5761317486129701
+                      y_offset_pct: 0.005794935673475265
+                    bounding_box_percentage: 29.91
+              url: 'https://images-ssl.gotinder.com/userId/original_photoId.png'
+              processedFiles:
+                - url: 'https://images-ssl.gotinder.com/userId/640x800_photoId.jpg'
+                  height: 800
+                  width: 640
+                - url: 'https://images-ssl.gotinder.com/userId/320x400_photoId.jpg'
+                  height: 400
+                  width: 320
+                - url: 'https://images-ssl.gotinder.com/userId/172x216_photoId.jpg'
+                  height: 216
+                  width: 172
+                - url: 'https://images-ssl.gotinder.com/userId/84x106_photoId.jpg'
+                  height: 106
+                  width: 84
+              fileName: photoId.jpg
+              extension: 'jpg,webp'
+              webp_qf:
+                - 75
+              rank: 5
+              score: 0.08164535
+              win_count: 3
+              assets: []
+              type: image
+        following: true
+        following_moments: true
+    title: ''
+    properties:
+      _id:
+        type: string
+      id:
+        type: string
+      closed:
+        type: boolean
+      common_friend_count:
+        type: number
+      common_like_count:
+        type: number
+      created_date:
+        type: string
+      dead:
+        type: boolean
+      last_activity_date:
+        type: string
+      message_count:
+        type: number
+      messages:
+        type: array
+        items:
+          type: object
+      participants:
+        type: array
+        items:
+          type: string
+      pending:
+        type: boolean
+      is_super_like:
+        type: boolean
+      is_boost_match:
+        type: boolean
+      is_super_boost_match:
+        type: boolean
+      is_experiences_match:
+        type: boolean
+      is_fast_match:
+        type: boolean
+      is_opener:
+        type: boolean
+      person:
+        $ref: '#/definitions/Matched-User'
+      following:
+        type: boolean
+      following_moments:
+        type: boolean
+    required:
+      - _id
+      - id
+      - closed
+      - common_friend_count
+      - common_like_count
+      - created_date
+      - dead
+      - last_activity_date
+      - message_count
+      - messages
+      - participants
+      - pending
+      - is_super_like
+      - is_boost_match
+      - is_super_boost_match
+      - is_experiences_match
+      - is_fast_match
+      - is_opener
+      - person
+      - following
+      - following_moments
+  Matched-User:
+    description: A user object inside a match object
+    type: object
+    x-examples:
+      Example:
+        _id: userId
+        badges: []
+        bio: Hello World
+        birth_date: '2002-10-06T11:19:48.354Z'
+        gender: 1
+        name: Snowland
+        ping_time: '2014-12-09T00:00:00.000Z'
+        photos:
+          - id: photoId
+            crop_info:
+              user:
+                width_pct: 1
+                x_offset_pct: 0
+                height_pct: 0.8
+                y_offset_pct: 0
+              algo:
+                width_pct: 0.5192223265883513
+                x_offset_pct: 0.2525442640646361
+                height_pct: 0.5761317486129701
+                y_offset_pct: 0.005794935673475265
+              processed_by_bullseye: true
+              user_customized: false
+              faces:
+                - algo:
+                    width_pct: 0.5192223265883513
+                    x_offset_pct: 0.2525442640646361
+                    height_pct: 0.5761317486129701
+                    y_offset_pct: 0.005794935673475265
+                  bounding_box_percentage: 29.91
+            url: 'https://images-ssl.gotinder.com/userId/original_photoId.png'
+            processedFiles:
+              - url: 'https://images-ssl.gotinder.com/userId/640x800_photoId.jpg'
+                height: 800
+                width: 640
+              - url: 'https://images-ssl.gotinder.com/userId/320x400_photoId.jpg'
+                height: 400
+                width: 320
+              - url: 'https://images-ssl.gotinder.com/userId/172x216_photoId.jpg'
+                height: 216
+                width: 172
+              - url: 'https://images-ssl.gotinder.com/userId/84x106_photoId.jpg'
+                height: 106
+                width: 84
+            fileName: photoId.jpg
+            extension: 'jpg,webp'
+            webp_qf:
+              - 75
+            rank: 5
+            score: 0.08164535
+            win_count: 3
+            assets: []
+            type: image
+    properties:
+      _id:
+        type: string
+      badges:
+        type: array
+        items:
+          $ref: '#/definitions/Badge'
+      bio:
+        type: string
+      birth_date:
+        type: string
+      gender:
+        type: number
+      name:
+        type: string
+      ping_time:
+        type: string
+      photos:
+        type: array
+        items:
+          $ref: '#/definitions/Match-Photo'
+    required:
+      - _id
+      - badges
+      - bio
+      - birth_date
+      - gender
+      - name
+      - ping_time
+      - photos
 securityDefinitions:
   X-Auth-Token:
     name: X-Auth-Token
