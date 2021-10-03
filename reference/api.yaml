@@ -166,7 +166,7 @@ definitions:
         type: array
         uniqueItems: false
         items:
-          $ref: '#/definitions/Photo'
+          $ref: '#/definitions/Profile-Photo'
       photo_optimizer_enabled:
         type: boolean
       ping_time:
@@ -429,7 +429,7 @@ definitions:
         type: array
         uniqueItems: false
         items:
-          $ref: '#/definitions/Photo'
+          $ref: '#/definitions/User-Photo'
       common_likes:
         type: array
         items:
@@ -643,8 +643,8 @@ definitions:
       - name
       - selected
       - top_track
-  Photo:
-    description: 'A photo object. All optional fields are only present in a profile object. '
+  Profile-Photo:
+    description: A photo inside a profile object
     type: object
     x-examples:
       Example:
@@ -710,7 +710,7 @@ definitions:
           type: object
       type:
         type: string
-        description: in a user object this field is named media_type
+        description: ''
       created_at:
         type: string
       updated_at:
@@ -742,33 +742,206 @@ definitions:
         type: number
       phash:
         type: object
+        required:
+          - version
+          - value
         properties:
           version:
             type: string
           value:
             type: number
-        required:
-          - version
-          - value
       dhash:
         type: object
+        required:
+          - version
+          - value
         properties:
           version:
             type: string
           value:
             type: number
-        required:
-          - version
-          - value
     required:
       - id
       - assets
       - type
+      - created_at
+      - updated_at
       - crop_info
       - url
       - processedFiles
       - fileName
       - extension
+      - fbId
+      - webp_qf
+      - rank
+      - score
+      - win_count
+      - phash
+      - dhash
+  User-Photo:
+    description: A photo inside a user object
+    type: object
+    x-examples:
+      Example:
+        id: photoId
+        crop_info:
+          user:
+            width_pct: 1
+            x_offset_pct: 0
+            height_pct: 0.8
+            y_offset_pct: 0
+          algo:
+            width_pct: 0.5442686
+            x_offset_pct: 0.45573142
+            height_pct: 0.5571207
+            y_offset_pct: 0.1011261
+          processed_by_bullseye: true
+          user_customized: false
+          faces:
+            - algo:
+                width_pct: 0.3155729
+                x_offset_pct: 0.1249982
+                height_pct: 0.35462007
+                y_offset_pct: 0.10779645
+              bounding_box_percentage: 31.68
+        url: 'https://images-ssl.gotinder.com/userId/original_photoId.png'
+        processedFiles:
+          - url: 'https://images-ssl.gotinder.com/userId/640x800_photoId.jpg'
+            height: 800
+            width: 640
+          - url: 'https://images-ssl.gotinder.com/userId/320x400_photoId.jpg'
+            height: 400
+            width: 320
+          - url: 'https://images-ssl.gotinder.com/userId/172x216_photoId.jpg'
+            height: 216
+            width: 172
+          - url: 'https://images-ssl.gotinder.com/userId/84x106_photoId.jpg'
+            height: 106
+            width: 84
+        fileName: 1f440c17-8f4f-4f4f-be7a-28932b4f3c55.jpg
+        extension: 'jpg,webp'
+        media_type: image
+    properties:
+      id:
+        type: string
+      crop_info:
+        $ref: '#/definitions/Crop-Info'
+      url:
+        type: string
+      processedFiles:
+        type: array
+        uniqueItems: false
+        items:
+          $ref: '#/definitions/Sized-Image'
+      fileName:
+        type: string
+      extension:
+        type: string
+      media_type:
+        type: string
+    required:
+      - id
+      - crop_info
+      - url
+      - processedFiles
+      - fileName
+      - extension
+      - media_type
+  Match-Photo:
+    description: ''
+    type: object
+    x-examples:
+      Example:
+        id: photoId
+        crop_info:
+          user:
+            width_pct: 1
+            x_offset_pct: 0
+            height_pct: 0.8
+            y_offset_pct: 0
+          algo:
+            width_pct: 0.5192223265883513
+            x_offset_pct: 0.2525442640646361
+            height_pct: 0.5761317486129701
+            y_offset_pct: 0.005794935673475265
+          processed_by_bullseye: true
+          user_customized: false
+          faces:
+            - algo:
+                width_pct: 0.5192223265883513
+                x_offset_pct: 0.2525442640646361
+                height_pct: 0.5761317486129701
+                y_offset_pct: 0.005794935673475265
+              bounding_box_percentage: 29.91
+        url: 'https://images-ssl.gotinder.com/userId/original_photoId.png'
+        processedFiles:
+          - url: 'https://images-ssl.gotinder.com/userId/640x800_photoId.jpg'
+            height: 800
+            width: 640
+          - url: 'https://images-ssl.gotinder.com/userId/320x400_photoId.jpg'
+            height: 400
+            width: 320
+          - url: 'https://images-ssl.gotinder.com/userId/172x216_photoId.jpg'
+            height: 216
+            width: 172
+          - url: 'https://images-ssl.gotinder.com/userId/84x106_photoId.jpg'
+            height: 106
+            width: 84
+        fileName: photoId.jpg
+        extension: 'jpg,webp'
+        webp_qf:
+          - 75
+        rank: 5
+        score: 0.08164535
+        win_count: 3
+        assets: []
+        type: image
+    properties:
+      id:
+        type: string
+      crop_info:
+        $ref: '#/definitions/Crop-Info'
+      url:
+        type: string
+      processedFiles:
+        type: array
+        uniqueItems: false
+        items:
+          $ref: '#/definitions/Sized-Image'
+      fileName:
+        type: string
+      extension:
+        type: string
+      webp_qf:
+        type: array
+        uniqueItems: false
+        items:
+          type: object
+      rank:
+        type: number
+      score:
+        type: number
+      win_count:
+        type: number
+      assets:
+        type: array
+        items:
+          type: object
+      type:
+        type: string
+    required:
+      - id
+      - crop_info
+      - url
+      - processedFiles
+      - fileName
+      - extension
+      - webp_qf
+      - rank
+      - score
+      - win_count
+      - assets
+      - type
   Sized-Image:
     description: A sized user image or album cover
     type: object
