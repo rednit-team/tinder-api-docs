@@ -1579,6 +1579,8 @@ definitions:
             win_count: 3
             assets: []
             type: image
+        hide_distance: false
+        hide_age: false
     properties:
       _id:
         type: string
@@ -1600,6 +1602,10 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Match-Photo'
+      hide_distance:
+        type: boolean
+      hide_age:
+        type: boolean
     required:
       - _id
       - badges
@@ -1609,6 +1615,8 @@ definitions:
       - name
       - ping_time
       - photos
+      - hide_distance
+      - hide_age
   Message:
     description: ''
     type: object
