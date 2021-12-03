@@ -1,6 +1,6 @@
 # Authentication
 
-Tinder uses Basic Authentication to "secure" their api. A request needs a `X-Auth-Token` header in order to be authenticated. 
+Tinder uses Basic Authentication with tokens in UUID format to "secure" their api. A request needs a `X-Auth-Token` header in order to be authenticated. 
 
 ## Getting a token
 

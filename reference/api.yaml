@@ -19,13 +19,18 @@ consumes:
 paths:
   /profile:
     get:
-      summary: Get Profile
+      summary: Profile
       tags: []
       responses:
         '200':
-          description: OK
+          description: ''
           schema:
             $ref: '#/definitions/Profile'
+          examples: {}
+        '400':
+          $ref: '#/responses/Bad-Request'
+        '401':
+          $ref: '#/responses/Unauthorized'
       operationId: get-profile
       description: Returns information about the self user
     parameters: []
@@ -362,6 +367,16 @@ definitions:
             choice_selections:
               - id: '2'
                 name: Beer
+        user_interests:
+          selected_interests:
+            - id: it_69
+              name: Athlete
+            - id: it_7
+              name: Travel
+            - id: it_1
+              name: Coffee
+            - id: it_2
+              name: Grab a drink
         s_number: 123456789
         _id: userId
         is_tinder_u: false
@@ -458,6 +473,23 @@ definitions:
             type: string
         required:
           - name
+      user_interests:
+        type: object
+        properties:
+          selected_interests:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+              required:
+                - id
+                - name
+        required:
+          - selected_interests
     required:
       - common_friends
       - common_friend_count
@@ -1814,3 +1846,80 @@ securityDefinitions:
     in: header
 security:
   - X-Auth-Token: []
+responses:
+  Bad-Request:
+    description: ''
+    content:
+      application/json:
+        schema:
+          properties:
+            id:
+              type: string
+    schema:
+      description: ''
+      type: object
+      properties:
+        meta:
+          type: object
+          properties:
+            status:
+              type: number
+          required:
+            - status
+        error:
+          type: object
+          properties:
+            code:
+              type: number
+          required:
+            - code
+      required:
+        - meta
+        - error
+      x-examples:
+        example-1:
+          meta:
+            status: 400
+          error:
+            code: 41002
+    examples:
+      Example:
+        meta:
+          status: 400
+        error:
+          code: 41002
+  Unauthorized:
+    description: ''
+    content:
+      application/json:
+        schema:
+          properties:
+            id:
+              type: string
+    schema:
+      description: ''
+      type: object
+      properties:
+        meta:
+          type: object
+          properties:
+            status:
+              type: number
+          required:
+            - status
+        error:
+          type: object
+          properties:
+            code:
+              type: number
+          required:
+            - code
+      required:
+        - meta
+        - error
+      x-examples:
+        example-1:
+          meta:
+            status: 401
+          error:
+            code: 85401
