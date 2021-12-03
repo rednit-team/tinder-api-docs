@@ -10,6 +10,10 @@ Login to Tinder in your browser. Open the network tab and filter for `api.gotind
 
 You can invalidate a token by logging out. 
 
+## Lifetime of a token
+The tokens have a lifetime of approximately a little `less than 4 days`, should no logout occur in the meantime.
+This information is not exact but an empirical value over 3 months.
+
 ## Login Flow
 
 > Tinder recently updated their login flow to `v3/auth/` endpoints and for some reason started to use [protobuf](https://developers.google.com/protocol-buffers). The old `v2/auth` or even `/auth/` endpoints aren't working anymore. However, the new `v3` endpoints aren't documented yet. 
